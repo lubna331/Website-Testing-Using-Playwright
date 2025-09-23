@@ -6,15 +6,18 @@ import { CartPage } from '../pages/CartPage';
 
 test('test', async({page})=>{
 
-    //Home
-
-
     //Login
     const login = new LoginPage(page);
     await login.gotoLoginPage();
-    await login.login('Lubna','12341234');
-    await page.waitForTimeout(3000);
+    await login.login('harry@potter.com','12341234');
+    
 
+    //Author
+    const author = new AuthorPage(page);
+    await author.authorpage();
+    
     //Cart
-
+    const cart = new CartPage(page);
+    await cart.cartpage();
+    await cart.billingDetails('Harry Potter','012345679','hogwartowl@letter.com','Oxford,England');
 });
